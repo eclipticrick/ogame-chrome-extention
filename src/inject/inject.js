@@ -51,15 +51,22 @@ function onDocumentReady() {
 	// create the windows & toggles for it
 	windows.forEach((window, i) => {
 		const { name, icon, childElement } = window;
+		const activateWindow = (windowElement) => {
+			const highestZIndex = windows.reduce((a, w) => a > Number(w.element.style.zIndex) ? a : Number(w.element.style.zIndex), 0);
+			if (!windowElement.style.zIndex || Number(windowElement.style.zIndex) < highestZIndex) {
+				windowElement.style.zIndex = (highestZIndex + 1).toString();
+			}
+		};
 		const windowEl = createDraggableWindowElement({
 			id: `draggable-window-${i}`,
 			name,
 			boundingElement: root,
 			childElement,
+			onClickHandler: () => activateWindow(windowEl)
 		});
 		windows[i].boundingElement = root;
 		windows[i].element = windowEl;
-		toggles.push({ icon, window: windowEl })
+		toggles.push({ icon, window: windowEl, activateWindowHandler: () => activateWindow(windowEl) })
 	});
 
 	// actually create the toggle buttons

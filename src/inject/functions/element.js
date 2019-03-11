@@ -24,12 +24,13 @@ function createWindowToggleButtonsElement(options = {}) {
     const togglesEl = document.createElement('div');
     togglesEl.className = 'toggles';
     toggles.forEach(toggle => {
-        const { icon, window } = toggle;
+        const { icon, window, activateWindowHandler } = toggle;
         const btn = document.createElement('button');
         btn.id = `toggle-${window.id}`;
         btn.onclick = () => {
             toggleElementVisibility({ element: window });
             updateToggleButtonStatus({ windowId: window.id });
+            activateWindowHandler()
         };
         btn.innerHTML = `<i class="material-icons">${icon}</i>`;
         togglesEl.appendChild(btn);
@@ -42,14 +43,15 @@ function createDraggableWindowElement(options = {}) {
         id,
         name,
         boundingElement,
-        childElement
+        childElement,
+        onClickHandler
     } = options;
 
     const windowEl = document.createElement('div');
     windowEl.className = 'window';
     windowEl.id = id;
     windowEl.style.display = 'none';
-
+    windowEl.onclick = onClickHandler;
     const windowHeaderEl = createHeaderElement({ windowEl });
     windowEl.appendChild(windowHeaderEl);
     windowEl.appendChild(childElement);
@@ -68,8 +70,14 @@ function createDraggableWindowElement(options = {}) {
 
         const headerTitleEl = createTitleElement();
         const minimizeButtonEl = createMinimizeButton();
+        const opacitizeButtonEl = createOpacitizeButton();
         windowHeaderEl.appendChild(headerTitleEl);
-        windowHeaderEl.appendChild(minimizeButtonEl);
+
+        const rightDiv = document.createElement('div');
+        rightDiv.classList.add('button-container');
+        rightDiv.appendChild(opacitizeButtonEl);
+        rightDiv.appendChild(minimizeButtonEl);
+        windowHeaderEl.appendChild(rightDiv);
 
         return windowHeaderEl;
 
@@ -78,6 +86,16 @@ function createDraggableWindowElement(options = {}) {
             titleEl.className = 'title';
             titleEl.innerText = name;
             return titleEl;
+        }
+        function createOpacitizeButton() {
+            const button = document.createElement('button');
+            button.className = 'opacitize';
+            button.innerText = '*';
+            button.onclick = () => {
+                toggleElementOpacity({ element: windowEl });
+                updateToggleButtonStatus({ windowId: windowEl.id });
+            };
+            return button;
         }
         function createMinimizeButton() {
             const button = document.createElement('button');
@@ -92,9 +110,18 @@ function createDraggableWindowElement(options = {}) {
     }
 }
 
-function toggleElementVisibility(options = {}) {
+function toggleElementOpacity(options = {}) {
     const { element } = options;
 
+    if (element.style.backgroundColor.includes('rgba')) {
+        element.style.backgroundColor = null
+    } else {
+        element.style.backgroundColor = 'rgba(0,0,0,.5)'
+    }
+}
+
+function toggleElementVisibility(options = {}) {
+    const { element } = options;
     if (element.style.display === 'none') {
         element.style.display = 'block'
     } else {

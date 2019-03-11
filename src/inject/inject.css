@@ -82,14 +82,27 @@
     text-overflow: ellipsis;
 }
 
-#OGAME_EXTENTION .window > .header > button.minimize {
-    background: #7b3a23;
+#OGAME_EXTENTION .window > .header > .button-container {
+    height: 100%;
+}
+#OGAME_EXTENTION .window > .header > .button-container > button {
     height: 100%;
     color: white;
     width: 24px;
     transition: all .24s;
 }
+#OGAME_EXTENTION .window > .header > .button-container > button.minimize {
+    background: #7b3a23;
+}
 
-#OGAME_EXTENTION .window > .header > button.minimize:hover {
+#OGAME_EXTENTION .window > .header > .button-container > button.minimize:hover {
     background: #9f4b2d;
+}
+
+#OGAME_EXTENTION .window > .header > .button-container > button.opacitize {
+    background: rgba(255,255,255,.1);
+}
+
+#OGAME_EXTENTION .window > .header > .button-container > button.opacitize:hover {
+    background: rgba(255,255,255,.2);
 }
