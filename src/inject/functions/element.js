@@ -52,6 +52,7 @@ function createDraggableWindowElement(options = {}) {
     const windowEl = document.createElement('div');
     windowEl.className = 'window';
     windowEl.id = id;
+    windowEl.style.display = 'none';
 
     const windowHeaderEl = createHeaderElement({ windowEl });
     windowEl.appendChild(windowHeaderEl);
