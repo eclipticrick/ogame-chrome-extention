@@ -56,8 +56,8 @@
 #OGAME_EXTENTION .window {
     background: #4d5aa7;
     color: white;
-    min-width: 300px;
-    min-height: 200px;
+    max-width: 100%;
+    max-height: calc(100% - 21px); /* footer height is 19px border is 1px (top&bottom is 2) */
     overflow: hidden;
     position: absolute;
     border-radius: 6px;

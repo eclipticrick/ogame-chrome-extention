@@ -1,9 +1,4 @@
-function addMaterialIconStyles() {
-    const materialIconStyles = document.createElement('link');
-    materialIconStyles.href = 'https://fonts.googleapis.com/icon?family=Material+Icons';
-    materialIconStyles.rel = 'stylesheet';
-    document.head.appendChild(materialIconStyles);
-}
+
 function createRootElement() {
     const root = document.createElement('div');
     root.id = 'OGAME_EXTENTION';
@@ -46,7 +41,8 @@ function createDraggableWindowElement(options = {}) {
     const {
         id,
         name,
-        boundingElement
+        boundingElement,
+        childElement
     } = options;
 
     const windowEl = document.createElement('div');
@@ -56,6 +52,7 @@ function createDraggableWindowElement(options = {}) {
 
     const windowHeaderEl = createHeaderElement({ windowEl });
     windowEl.appendChild(windowHeaderEl);
+    windowEl.appendChild(childElement);
 
     // make element draggable
     dragElement({

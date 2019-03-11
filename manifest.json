@@ -24,6 +24,10 @@
         "https://*.ogame.gameforge.com/*"
       ],
       "js": [
+        "src/inject/functions/taskQueuingElement.js",
+        "src/inject/functions/scrapFinderElement.js",
+        "src/inject/functions/inactivePlayerFinderElement.js",
+        "src/inject/functions/extendedPlayerInformationElement.js",
         "src/inject/functions/element.js",
         "src/inject/inject.js"
       ],
