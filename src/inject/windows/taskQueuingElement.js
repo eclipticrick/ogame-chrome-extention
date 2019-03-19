@@ -2,6 +2,14 @@
 function createTaskQueuingElement() {
 
     /* TODO: move to localStorage */
+    const taskQueingStatus = {
+        paused: true,
+        lastKnownToken: null,
+        autoPauseOnTokenChange: false,
+        interval: 60000
+    };
+
+    /* TODO: move to localStorage */
     const currentTasks = [
         {
             type: 1,
@@ -200,6 +208,16 @@ function createTaskQueuingElement() {
     const contentEl = createWindow({
         innerHTML: createHtmlTemplate()
     });
+
+    const deleteButtons = contentEl.querySelectorAll('.task > .content > .actions > .delete > i');
+    const duplicateButtons = contentEl.querySelectorAll('.task > .content > .actions > .duplicate > i');
+    const defaultTooltip = {
+        placement: 'left',
+        arrow: true,
+    };
+    deleteButtons.forEach(el => tippy(el, { ...defaultTooltip, content: 'Cancel!' }));
+    duplicateButtons.forEach(el => tippy(el, { ...defaultTooltip, content: 'Duplicate this task!' }));
+
     return contentEl;
 
     function createWindow(options = {}) {
@@ -213,6 +231,10 @@ function createTaskQueuingElement() {
     function createHtmlTemplate() {
 
         return `
+            <div class="title">Status</div>
+            
+            ${taskQuingStatusTemplate()}
+
             <div class="title">Currently trying</div>
             
             ${currentTaskTemplate()}
@@ -242,6 +264,37 @@ function createTaskQueuingElement() {
             `;
         }
 
+        function taskQuingStatusTemplate() {
+            const { paused, interval, autoPauseOnTokenChange } = taskQueingStatus;
+            let status = 'Running...';
+            let icon = 'pause_circle_filled';
+            if (paused) {
+                status = 'The task queing is paused';
+                icon = 'play_circle_filled';
+            }
+            return `
+                <div class="status">
+                    <span class="statusText ${paused ? 'paused' : ''}">${status}</span>
+                    <div class="buttonContainer">
+                        <i class="material-icons">${icon}</i>
+                    </div>
+                    <div class="settings">
+                        <h4>Settings</h4>
+                        <div>
+                            <input type="checkbox" id="autoPauseOnTokenChange" name="autoPauseOnTokenChange" ${autoPauseOnTokenChange ? 'checked' : ''}/>
+                            <label for="autoPauseOnTokenChange">Auto pause task que on logout</label>
+                        </div>
+                        <div>
+                            Try executing the task every <input type="number" min="60" value="${interval / 1000}"/> seconds
+                        </div>
+                        <div>
+                            Next try will be in <span id="nextTaskQueTryTimer">20</span> seconds
+                        </div>
+
+                    </div>
+                </div>
+            `
+        }
         function currentTaskTemplate() {
             let template = '';
             currentTasks.forEach(task => {
@@ -266,7 +319,7 @@ function createTaskQueuingElement() {
                                 <div class="delete">
                                     <i class="material-icons">delete</i>
                                 </div>
-                                <div>
+                                <div class="duplicate">
                                     <i class="material-icons">file_copy</i>
                                 </div>
                             </div>
@@ -297,10 +350,10 @@ function createTaskQueuingElement() {
                                 <div class="delete">
                                     <i class="material-icons">delete</i>
                                 </div>
-                                <div>
+                                <div class="duplicate">
                                     <i class="material-icons">file_copy</i>
                                 </div>
-                                <div>
+                                <div class="move">
                                     <i class="material-icons">keyboard_arrow_up</i>
                                     <i class="material-icons">keyboard_arrow_down</i>
                                 </div>

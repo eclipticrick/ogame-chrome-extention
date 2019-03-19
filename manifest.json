@@ -29,6 +29,8 @@
         "https://*.ogame.gameforge.com/*"
       ],
       "js": [
+        "js/popper.min.js",
+        "js/tippy.min.js",
         "src/inject/windows/taskQueuingElement.js",
         "src/inject/functions/element.js",
         "src/inject/inject.js"
