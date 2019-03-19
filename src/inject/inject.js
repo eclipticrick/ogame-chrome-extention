@@ -15,6 +15,8 @@ const windows = [
 		childElement: createTaskQueuingElement(),
 		boundingElement: null,
 		element: null,
+        height: 800,
+        width: 300,
 	},
 	// {
 	// 	icon: 'location_searching',
@@ -50,7 +52,7 @@ function onDocumentReady() {
 
 	// create the windows & toggles for it
 	windows.forEach((window, i) => {
-		const { name, icon, childElement } = window;
+		const { name, icon, childElement, height, width } = window;
 		const activateWindow = (windowElement) => {
 			const highestZIndex = windows.reduce((a, w) => a > Number(w.element.style.zIndex) ? a : Number(w.element.style.zIndex), 0);
 			if (!windowElement.style.zIndex || Number(windowElement.style.zIndex) < highestZIndex) {
@@ -62,6 +64,8 @@ function onDocumentReady() {
 			name,
 			boundingElement: root,
 			childElement,
+            height,
+            width,
 			onClickHandler: () => activateWindow(windowEl)
 		});
 		windows[i].boundingElement = root;
@@ -87,6 +91,9 @@ function onDocumentReady() {
 // make sure when resizing none of the windows are outside of the view
 let lastKnownWidth = 0;
 window.onresize = (event) => {
+
+    // todo: move window UP if the bottom part is out of bounds
+
 	const windowWidth = event.target.outerWidth;
 	if (lastKnownWidth !== windowWidth) {
 		lastKnownWidth = windowWidth;

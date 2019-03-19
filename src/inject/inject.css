@@ -112,24 +112,8 @@
 #OGAME_EXTENTION .window > .header > .button-container > button.opacitize:hover {
     background: rgba(255,255,255,.2);
 }
-
-#OGAME_EXTENTION #TASK_QUE {
-    display: flex;
-    flex-direction: column;
-}
-#OGAME_EXTENTION #TASK_QUE > div {
-    font-family: 'Do Hyeon', sans-serif;
-
-}
-#OGAME_EXTENTION #TASK_QUE > div.title {
-    font-size: 16px;
-    margin: 12px 12px 6px;
-    letter-spacing: 3px;
-}
-#OGAME_EXTENTION #TASK_QUE > div.title:first-child {
-    margin-top: 0;
-}
-#OGAME_EXTENTION #TASK_QUE > div.item {
-    padding: 12px;
-    box-shadow: 0 0 0 1px lightblue inset;
+#OGAME_EXTENTION .window > div:not(.header) {
+    overflow: auto;
+    width: 100%;
+    height: calc(100% - 25px); /* window-header height is 25px */
 }

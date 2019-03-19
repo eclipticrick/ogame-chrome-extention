@@ -1,0 +1,35 @@
+
+/* TASK QUE WINDOW */
+#OGAME_EXTENTION #TASK_QUE {
+    font-family: 'Do Hyeon', sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+#OGAME_EXTENTION #TASK_QUE > div {
+
+}
+#OGAME_EXTENTION #TASK_QUE > div.task {
+    font-size: 16px;
+    margin: 6px 12px;
+}
+#OGAME_EXTENTION #TASK_QUE > div.title {
+    font-size: 16px;
+    margin: 12px 12px 6px;
+    letter-spacing: 3px;
+}
+#OGAME_EXTENTION #TASK_QUE > div.title:first-child {
+    margin-top: 6px;
+}
+#OGAME_EXTENTION #TASK_QUE > div.category {
+    flex-direction: row;
+}
+#OGAME_EXTENTION #TASK_QUE > div.category > div.title {
+    width: 100%;
+}
+#OGAME_EXTENTION #TASK_QUE > div.category > div.item {
+
+}
+/*#OGAME_EXTENTION #TASK_QUE > div.item {
+    padding: 12px;
+    box-shadow: 0 0 0 1px lightblue inset;
+}*/

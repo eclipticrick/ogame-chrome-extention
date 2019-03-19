@@ -18,7 +18,8 @@
     "https://*.ogame.gameforge.com/*"
   ],
   "web_accessible_resources": [
-    "fonts/*.ttf"
+    "fonts/*.ttf",
+    "images/*.png"
   ],
   "content_scripts": [
     {
@@ -32,6 +33,7 @@
         "src/inject/inject.js"
       ],
       "css": [
+        "src/inject/windows/taskQueuingStyles.css",
         "src/inject/inject.css"
       ]
     }
