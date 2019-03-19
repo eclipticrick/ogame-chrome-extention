@@ -9,8 +9,7 @@
 }
 
 
-
-
+/* task row */
 #OGAME_EXTENTION #TASK_QUE > div.task {
     font-family: 'Roboto Light', sans-serif;
     font-size: 16px;
@@ -92,8 +91,7 @@
 }
 
 
-
-
+/* title */
 #OGAME_EXTENTION #TASK_QUE > div.title {
     font-size: 16px;
     margin: 12px 12px 6px;
@@ -101,6 +99,9 @@
 #OGAME_EXTENTION #TASK_QUE > div.title:first-child {
     margin-top: 6px;
 }
+
+
+/* add que view */
 #OGAME_EXTENTION #TASK_QUE > div.category {
     flex-direction: row;
 }
@@ -110,7 +111,3 @@
 #OGAME_EXTENTION #TASK_QUE > div.category > div.item {
 
 }
-/*#OGAME_EXTENTION #TASK_QUE > div.item {
-    padding: 12px;
-    box-shadow: 0 0 0 1px lightblue inset;
-}*/

@@ -17,28 +17,7 @@ const windows = [
 		element: null,
         height: 800,
         width: 360,
-	},
-	// {
-	// 	icon: 'location_searching',
-	// 	name: 'Scrap finder',
-	// 	childElement: createScrapFinderElement(),
-	// 	boundingElement: null,
-	// 	element: null,
-	// },
-	// {
-	// 	icon: 'power_off',
-	// 	name: 'Inactive Player Finder',
-	// 	childElement: createInactivePlayerFinderElement(),
-	// 	boundingElement: null,
-	// 	element: null,
-	// },
-	// {
-	// 	icon: 'person',
-	// 	name: 'Extended player information',
-	// 	childElement: createExtendedPlayerInformationElement(),
-	// 	boundingElement: null,
-	// 	element: null,
-	// }
+	}
 ];
 
 // when document is ready:
