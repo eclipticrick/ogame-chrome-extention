@@ -16,7 +16,7 @@ const windows = [
 		boundingElement: null,
 		element: null,
         height: 800,
-        width: 300,
+        width: 360,
 	},
 	// {
 	// 	icon: 'location_searching',

@@ -19,7 +19,8 @@
   ],
   "web_accessible_resources": [
     "fonts/*.ttf",
-    "images/*.png"
+    "images/*.png",
+    "images/*.jpg"
   ],
   "content_scripts": [
     {

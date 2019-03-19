@@ -1,21 +1,102 @@
 
 /* TASK QUE WINDOW */
 #OGAME_EXTENTION #TASK_QUE {
-    font-family: 'Do Hyeon', sans-serif;
     display: flex;
     flex-direction: column;
 }
 #OGAME_EXTENTION #TASK_QUE > div {
 
 }
+
+
+
+
 #OGAME_EXTENTION #TASK_QUE > div.task {
+    font-family: 'Roboto Light', sans-serif;
     font-size: 16px;
-    margin: 6px 12px;
+    margin: 2px 12px;
+    display: flex;
+    flex: 0 0 auto;
+    position: relative;
+    align-items: center;
+    overflow: hidden;
 }
+#OGAME_EXTENTION #TASK_QUE > div.task > div.image {
+    height: 50px;
+    width: 50px;
+    flex: 0 0 auto;
+    border-radius: 8px;
+    margin-right: 6px;
+}
+#OGAME_EXTENTION #TASK_QUE > div.task > div.content {
+    flex: 1 1 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+#OGAME_EXTENTION #TASK_QUE > div.task > div.content > span {
+    display: flex;
+    height: 20px;
+    align-items: center;
+    font-size: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+#OGAME_EXTENTION #TASK_QUE > div.task > div.content > span.title {
+    font-size: 12px;
+    font-family: 'Roboto', sans-serif;
+}
+#OGAME_EXTENTION #TASK_QUE > div.task > div.content > span.task {
+    color: yellow;
+    font-size: 12px;
+}
+#OGAME_EXTENTION #TASK_QUE > div.task > div.content > span.status {
+    color: #3fffb8;
+    font-size: 12px;
+}
+#OGAME_EXTENTION #TASK_QUE > div.task > div.content > span > div.planet {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-image: url(chrome-extension://__MSG_@@extension_id__/images/planet.png);
+    background-size: 20px;
+    margin-right: 6px;
+}
+#OGAME_EXTENTION #TASK_QUE > div.task > div.content > div.actions {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+#OGAME_EXTENTION #TASK_QUE > div.task > div.content > div.actions > div {
+    display: flex;
+    flex-direction: column;
+}
+#OGAME_EXTENTION #TASK_QUE > div.task > div.content > div.actions > div.delete {
+    color: #ff937f;
+}
+#OGAME_EXTENTION #TASK_QUE > div.task > div.content > div.actions > div > i {
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: box-shadow .24s, transform .24s;
+}
+#OGAME_EXTENTION #TASK_QUE > div.task > div.content > div.actions > div > i:hover {
+    box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.3) inset,
+                0 0 0 4px rgba(255, 255, 255, 0.3);
+    transform: scale(1.1)
+}
+
+
+
+
 #OGAME_EXTENTION #TASK_QUE > div.title {
     font-size: 16px;
     margin: 12px 12px 6px;
-    letter-spacing: 3px;
 }
 #OGAME_EXTENTION #TASK_QUE > div.title:first-child {
     margin-top: 6px;

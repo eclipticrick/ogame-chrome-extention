@@ -1,12 +1,18 @@
 /* @import url('https://fonts.googleapis.com/css?family=Do+Hyeon'); */
 
 @font-face {
-    font-family: 'Do Hyeon';
-    src: url('chrome-extension://__MSG_@@extension_id__/fonts/DoHyeon-Regular.ttf');
-    src: url('chrome-extension://__MSG_@@extension_id__/fonts/DoHyeon-Regular.ttf') format('truetype');
+    font-family: 'Roboto';
+    src: url('chrome-extension://__MSG_@@extension_id__/fonts/Roboto-Regular.ttf');
+    src: url('chrome-extension://__MSG_@@extension_id__/fonts/Roboto-Regular.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Roboto Light';
+    src: url('chrome-extension://__MSG_@@extension_id__/fonts/Roboto-Light.ttf');
+    src: url('chrome-extension://__MSG_@@extension_id__/fonts/Roboto-Light.ttf') format('truetype');
 }
 
 #OGAME_EXTENTION {
+    font-family: 'Roboto', sans-serif;
     position: fixed;
     top: 0;
     right: 0;
